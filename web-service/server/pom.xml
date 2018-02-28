@@ -6,18 +6,12 @@
 
     <parent>
         <groupId>com.singham.yuan.spring.boot</groupId>
-        <artifactId>spring-boot</artifactId>
+        <artifactId>web-service</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>web-service</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>client</module>
-        <module>server</module>
-        <module>protocol</module>
-        <module>common</module>
-    </modules>
+    <groupId>com.singham.yuan.spring.boot.web.service</groupId>
+    <artifactId>server</artifactId>
+    <packaging>jar</packaging>
 
 </project>
