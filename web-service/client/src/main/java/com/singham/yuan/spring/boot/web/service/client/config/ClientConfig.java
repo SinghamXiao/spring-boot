@@ -3,6 +3,7 @@ package com.singham.yuan.spring.boot.web.service.client.config;
 import com.singham.yuan.spring.boot.web.service.client.http.EnhanceHttpUrlConnectionMessageSender;
 import com.singham.yuan.spring.boot.web.service.client.interceptor.LogClientInterceptor;
 import com.singham.yuan.spring.boot.web.service.common.service.HandleNsPrefixService;
+import com.singham.yuan.spring.boot.web.service.common.service.TransformMessageService;
 import com.singham.yuan.spring.boot.web.service.common.xml.NamespacePrefixMapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -83,6 +84,11 @@ public class ClientConfig {
     @Bean
     public HandleNsPrefixService getHandleNsPrefixService() {
         return new HandleNsPrefixService();
+    }
+
+    @Bean
+    public TransformMessageService getTransformMessageService() {
+        return new TransformMessageService();
     }
 
 }
