@@ -2,7 +2,6 @@ package com.singham.yuan.spring.boot.web.service.client.interceptor;
 
 import com.singham.yuan.spring.boot.web.service.common.service.HandleNsPrefixService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.WebServiceClientException;
 import org.springframework.ws.client.support.interceptor.ClientInterceptor;
@@ -13,7 +12,6 @@ import org.springframework.ws.soap.SoapMessage;
 public class HandleClientInterceptor implements ClientInterceptor {
 
     @Autowired
-    @Qualifier("clientHandleNsPrefixService")
     private HandleNsPrefixService handleNsPrefixService;
 
     @Override

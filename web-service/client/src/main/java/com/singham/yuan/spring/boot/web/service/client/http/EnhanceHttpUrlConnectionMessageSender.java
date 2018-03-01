@@ -1,15 +1,17 @@
 package com.singham.yuan.spring.boot.web.service.client.http;
 
+import org.springframework.stereotype.Component;
 import org.springframework.ws.transport.http.HttpUrlConnectionMessageSender;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
+@Component
 public class EnhanceHttpUrlConnectionMessageSender extends HttpUrlConnectionMessageSender {
 
-    private int readTimeout = 10000;
+    private static final int readTimeout = 10000;
 
-    private int connectionTimeout = 10000;
+    private static final int connectionTimeout = 10000;
 
     @Override
     protected void prepareConnection(HttpURLConnection connection) throws IOException {
@@ -18,19 +20,4 @@ public class EnhanceHttpUrlConnectionMessageSender extends HttpUrlConnectionMess
         super.prepareConnection(connection);
     }
 
-    public int getReadTimeout() {
-        return readTimeout;
-    }
-
-    public void setReadTimeout(int readTimeout) {
-        this.readTimeout = readTimeout;
-    }
-
-    public int getConnectionTimeout() {
-        return connectionTimeout;
-    }
-
-    public void setConnectionTimeout(int connectionTimeout) {
-        this.connectionTimeout = connectionTimeout;
-    }
 }

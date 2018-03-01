@@ -4,7 +4,6 @@ import com.singham.yuan.spring.boot.web.service.common.service.TransformMessageS
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.WebServiceClientException;
 import org.springframework.ws.client.support.interceptor.ClientInterceptor;
@@ -16,7 +15,6 @@ public class LogClientInterceptor implements ClientInterceptor {
     private static final Logger LOGGER = LoggerFactory.getLogger(LogClientInterceptor.class);
 
     @Autowired
-    @Qualifier("clientTransformMessageService")
     private TransformMessageService transformMessageService;
 
     @Override

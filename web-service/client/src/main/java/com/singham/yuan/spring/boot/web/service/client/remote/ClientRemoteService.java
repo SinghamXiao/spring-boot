@@ -8,9 +8,9 @@ import com.singham.yuan.spring.boot.web.service.common.factory.TestHeadFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceMessageCallback;
 import org.springframework.ws.client.core.WebServiceMessageExtractor;
@@ -29,21 +29,18 @@ public class ClientRemoteService {
     private String remoteUrl;
 
     @Autowired
-    @Qualifier("webServiceTemplate")
     private WebServiceTemplate webServiceTemplate;
 
     @Autowired
-    @Qualifier("clientHeadMarshaller")
     private Jaxb2Marshaller headMarshaller;
 
     @Autowired
-    @Qualifier("clientBodyMarshaller")
     private Jaxb2Marshaller bodyMarshaller;
 
     @Autowired
-    @Qualifier("clientFaultMarshaller")
     private Jaxb2Marshaller faultMarshaller;
 
+    @Scheduled(cron = "0/3 * * * * ?")
     public void execute() {
 
         TestHead testHead = TestHeadFactory.newTestHead();

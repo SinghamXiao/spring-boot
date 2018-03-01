@@ -1,5 +1,6 @@
 package com.singham.yuan.spring.boot.web.service.common.service;
 
+import org.springframework.stereotype.Service;
 import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.soap.SoapMessage;
 import org.springframework.xml.transform.TransformerHelper;
@@ -10,6 +11,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
 
+@Service
 public class TransformMessageService extends TransformerObjectSupport {
 
     public String getMessageContent(WebServiceMessage webServiceMessage) {
