@@ -6,10 +6,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@ComponentScan(basePackages = {"com.singham.yuan.spring.boot.web.service"})
 @EnableScheduling
 @SpringBootApplication
 public class ClientApplication extends SpringBootServletInitializer implements EmbeddedServletContainerCustomizer {
@@ -27,4 +25,5 @@ public class ClientApplication extends SpringBootServletInitializer implements E
     public void customize(ConfigurableEmbeddedServletContainer configurableEmbeddedServletContainer) {
         configurableEmbeddedServletContainer.setPort(8182);
     }
+
 }
