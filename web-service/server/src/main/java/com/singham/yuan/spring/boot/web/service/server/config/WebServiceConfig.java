@@ -34,7 +34,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
         //配置对外服务根路径
-        return new ServletRegistrationBean(servlet, "/webservice/*");
+        return new ServletRegistrationBean(servlet, "/server/*");
     }
 
     @Override
@@ -44,13 +44,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         super.addInterceptors(interceptors);
     }
 
-    @Bean(name = "TestBody")
+    @Bean(name = "springBoot")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("TestBody");
+        wsdl11Definition.setPortTypeName("Test");
         wsdl11Definition.setLocationUri("/server");
         wsdl11Definition.setTargetNamespace("http://www.yuan.singham.com/service");
         wsdl11Definition.setSchema(countriesSchema);
+        wsdl11Definition.setServiceName("SpringBoot");
+        wsdl11Definition.setCreateSoap11Binding(false);
+        wsdl11Definition.setCreateSoap12Binding(true);
         return wsdl11Definition;
     }
 
