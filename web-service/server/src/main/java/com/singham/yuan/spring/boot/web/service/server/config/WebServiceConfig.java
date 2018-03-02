@@ -34,7 +34,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
         //配置对外服务根路径
-        return new ServletRegistrationBean(servlet, "/server/*");
+        return new ServletRegistrationBean(servlet, "/webservice/*");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("TestBody");
         wsdl11Definition.setLocationUri("/server");
-        wsdl11Definition.setTargetNamespace("http://www.yuan.singham.com/body");
+        wsdl11Definition.setTargetNamespace("http://www.yuan.singham.com/service");
         wsdl11Definition.setSchema(countriesSchema);
         return wsdl11Definition;
     }
