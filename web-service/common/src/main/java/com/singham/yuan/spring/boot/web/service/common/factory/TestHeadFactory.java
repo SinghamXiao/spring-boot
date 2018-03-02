@@ -1,8 +1,8 @@
 package com.singham.yuan.spring.boot.web.service.common.factory;
 
-import com.singham.yuan.head.Authentication;
-import com.singham.yuan.head.Info;
-import com.singham.yuan.head.TestHead;
+import com.singham.yuan.service.Authentication;
+import com.singham.yuan.service.Info;
+import com.singham.yuan.service.TestHead;
 
 public class TestHeadFactory {
 

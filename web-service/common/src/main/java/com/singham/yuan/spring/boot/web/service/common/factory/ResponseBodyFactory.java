@@ -1,7 +1,7 @@
 package com.singham.yuan.spring.boot.web.service.common.factory;
 
-import com.singham.yuan.body.ResponseBody;
-import com.singham.yuan.body.ResponseInfo;
+import com.singham.yuan.service.ResponseBody;
+import com.singham.yuan.service.ResponseInfo;
 
 public class ResponseBodyFactory {
 

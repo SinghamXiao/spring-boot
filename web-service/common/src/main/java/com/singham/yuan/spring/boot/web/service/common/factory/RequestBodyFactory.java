@@ -1,14 +1,14 @@
 package com.singham.yuan.spring.boot.web.service.common.factory;
 
-import com.singham.yuan.body.Info;
-import com.singham.yuan.body.RequestBody;
+import com.singham.yuan.service.RequestBody;
+import com.singham.yuan.service.RequestInfo;
 
 public class RequestBodyFactory {
 
     public static RequestBody newRequestBody() {
         RequestBody testBody = new RequestBody();
         testBody.setLevel("Level");
-        Info personInfo = new Info();
+        RequestInfo personInfo = new RequestInfo();
         personInfo.setName("Nanjing");
         personInfo.setAge(30);
         testBody.setInfo(personInfo);

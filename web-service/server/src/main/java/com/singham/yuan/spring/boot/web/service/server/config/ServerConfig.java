@@ -1,47 +1,20 @@
-package com.singham.yuan.spring.boot.web.service.client.config;
+package com.singham.yuan.spring.boot.web.service.server.config;
 
-import com.singham.yuan.spring.boot.web.service.client.http.EnhanceHttpUrlConnectionMessageSender;
-import com.singham.yuan.spring.boot.web.service.client.interceptor.LogClientInterceptor;
 import com.singham.yuan.spring.boot.web.service.common.service.HandleNsPrefixService;
 import com.singham.yuan.spring.boot.web.service.common.service.TransformMessageService;
 import com.singham.yuan.spring.boot.web.service.common.xml.NamespacePrefixMapperImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
-import org.springframework.ws.client.core.WebServiceTemplate;
-import org.springframework.ws.client.support.interceptor.ClientInterceptor;
 import org.springframework.ws.soap.SoapVersion;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 
 import java.util.HashMap;
 
 @Component
-public class ClientConfig {
+public class ServerConfig {
 
-    @Value("${remote.url}")
-    private String remoteUrl;
-
-    @Autowired
-    private EnhanceHttpUrlConnectionMessageSender sender;
-
-    @Autowired
-    private LogClientInterceptor logClientInterceptor;
-
-    @Bean
-    public WebServiceTemplate getWebServiceTemplate() {
-        WebServiceTemplate webServiceTemplate = new WebServiceTemplate(getSaajSoapMessageFactory());
-        webServiceTemplate.setDefaultUri(remoteUrl);
-        webServiceTemplate.setMarshaller(getMarshaller());
-        webServiceTemplate.setUnmarshaller(getMarshaller());
-        webServiceTemplate.setMessageSender(sender);
-        ClientInterceptor[] interceptors = {logClientInterceptor};
-        webServiceTemplate.setInterceptors(interceptors);
-        return webServiceTemplate;
-    }
-
-    @Bean
+    @Bean(name = "messageFactory")
     public SaajSoapMessageFactory getSaajSoapMessageFactory() {
         SaajSoapMessageFactory saajSoapMessageFactory = new SaajSoapMessageFactory();
         HashMap<String, Object> messageProperties = new HashMap<>();

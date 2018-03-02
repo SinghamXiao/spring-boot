@@ -2,22 +2,22 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
-           targetNamespace="http://www.yuan.singham.com/body"
+           targetNamespace="http://www.yuan.singham.com/service"
 
-           xmlns="http://www.yuan.singham.com/body"
+           xmlns="http://www.yuan.singham.com/service"
 
            elementFormDefault="qualified">
 
     <xs:element name="RequestBody">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Info" type="Info" minOccurs="0"/>
+                <xs:element name="Info" type="RequestInfo" minOccurs="0"/>
             </xs:sequence>
             <xs:attribute name="Level" type="xs:string"/>
         </xs:complexType>
     </xs:element>
 
-    <xs:complexType name="Info">
+    <xs:complexType name="RequestInfo">
         <xs:sequence>
             <xs:element name="Name" type="xs:string"/>
             <xs:element name="Age" type="xs:int"/>

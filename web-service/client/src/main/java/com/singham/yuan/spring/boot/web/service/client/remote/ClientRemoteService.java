@@ -1,8 +1,8 @@
 package com.singham.yuan.spring.boot.web.service.client.remote;
 
-import com.singham.yuan.body.Error;
-import com.singham.yuan.body.TestBody;
-import com.singham.yuan.head.TestHead;
+import com.singham.yuan.service.Error;
+import com.singham.yuan.service.TestBody;
+import com.singham.yuan.service.TestHead;
 import com.singham.yuan.spring.boot.web.service.common.factory.TestBodyFactory;
 import com.singham.yuan.spring.boot.web.service.common.factory.TestHeadFactory;
 import org.slf4j.Logger;
@@ -32,10 +32,7 @@ public class ClientRemoteService {
     private WebServiceTemplate webServiceTemplate;
 
     @Autowired
-    private Jaxb2Marshaller headMarshaller;
-
-    @Autowired
-    private Jaxb2Marshaller bodyMarshaller;
+    private Jaxb2Marshaller marshaller;
 
     @Autowired
     private Jaxb2Marshaller faultMarshaller;
@@ -49,8 +46,8 @@ public class ClientRemoteService {
 
         WebServiceMessageCallback requestCallback = message -> {
             SoapMessage soapMessage = (SoapMessage) message;
-//            headMarshaller.marshal(testHead, soapMessage.getSoapHeader().getResult());
-            bodyMarshaller.marshal(testBody, soapMessage.getSoapBody().getPayloadResult());
+//            marshaller.marshal(testHead, soapMessage.getSoapHeader().getResult());
+            marshaller.marshal(testBody, soapMessage.getSoapBody().getPayloadResult());
         };
 
         WebServiceMessageExtractor<TestBody> responseExtractor = message -> {
@@ -61,7 +58,7 @@ public class ClientRemoteService {
                 return null;
             }
 
-            TestBody rs = (TestBody) bodyMarshaller.unmarshal(soapMessage.getSoapBody().getPayloadSource());
+            TestBody rs = (TestBody) marshaller.unmarshal(soapMessage.getSoapBody().getPayloadSource());
             Error error = rs.getError();
             if (null != error) {
                 LOGGER.error(error.getDetail());
@@ -81,8 +78,8 @@ public class ClientRemoteService {
 //        RequestBody requestBody = RequestBodyFactory.newRequestBody();
 //        WebServiceMessageCallback requestCallback2 = message -> {
 //            SoapMessage soapMessage = (SoapMessage) message;
-//            headMarshaller.marshal(testHead, soapMessage.getSoapHeader().getResult());
-//            bodyMarshaller.marshal(requestBody, soapMessage.getSoapBody().getPayloadResult());
+//            marshaller.marshal(testHead, soapMessage.getSoapHeader().getResult());
+//            marshaller.marshal(requestBody, soapMessage.getSoapBody().getPayloadResult());
 //        };
 //
 //        WebServiceMessageExtractor<ResponseBody> responseExtractor2 = message -> {

@@ -1,7 +1,7 @@
 package com.singham.yuan.spring.boot.web.service.common.factory;
 
-import com.singham.yuan.body.PersonInfo;
-import com.singham.yuan.body.TestBody;
+import com.singham.yuan.service.PersonInfo;
+import com.singham.yuan.service.TestBody;
 
 public class TestBodyFactory {
 
