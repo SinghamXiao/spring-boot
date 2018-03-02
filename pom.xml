@@ -32,7 +32,7 @@
         <profile>
             <id>demo</id>
             <properties>
-                <profileActive>demo</profileActive>
+                <env>demo</env>
             </properties>
         </profile>
     </profiles>
