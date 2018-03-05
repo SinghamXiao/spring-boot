@@ -33,8 +33,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        //配置对外服务根路径
-        return new ServletRegistrationBean(servlet, "/server/*");
+        return new ServletRegistrationBean<>(servlet, "/service/*");
     }
 
     @Override
@@ -48,7 +47,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("Test");
-        wsdl11Definition.setLocationUri("/server");
+        wsdl11Definition.setLocationUri("/service");
         wsdl11Definition.setTargetNamespace("http://www.yuan.singham.com/service");
         wsdl11Definition.setSchema(countriesSchema);
         wsdl11Definition.setServiceName("SpringBoot");
