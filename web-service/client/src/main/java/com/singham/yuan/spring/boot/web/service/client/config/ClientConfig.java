@@ -8,8 +8,8 @@ import com.singham.yuan.spring.boot.web.service.common.xml.NamespacePrefixMapper
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.client.support.interceptor.ClientInterceptor;
 import org.springframework.ws.soap.SoapVersion;
@@ -17,7 +17,7 @@ import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 
 import java.util.HashMap;
 
-@Component
+@Configuration
 public class ClientConfig {
 
     @Value("${remote.url}")

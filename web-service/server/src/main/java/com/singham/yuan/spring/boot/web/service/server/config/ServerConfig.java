@@ -4,14 +4,14 @@ import com.singham.yuan.spring.boot.web.service.common.service.HandleNsPrefixSer
 import com.singham.yuan.spring.boot.web.service.common.service.TransformMessageService;
 import com.singham.yuan.spring.boot.web.service.common.xml.NamespacePrefixMapperImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.stereotype.Component;
 import org.springframework.ws.soap.SoapVersion;
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
 
 import java.util.HashMap;
 
-@Component
+@Configuration
 public class ServerConfig {
 
     @Bean(name = "messageFactory")
