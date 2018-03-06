@@ -3,6 +3,8 @@ package com.singham.yuan.spring.boot.web.service.client.remote;
 import com.singham.yuan.service.Error;
 import com.singham.yuan.service.TestBody;
 import com.singham.yuan.service.TestHead;
+import com.singham.yuan.spring.boot.web.service.client.model.db.Person;
+import com.singham.yuan.spring.boot.web.service.client.repository.PersonRepository;
 import com.singham.yuan.spring.boot.web.service.common.factory.TestBodyFactory;
 import com.singham.yuan.spring.boot.web.service.common.factory.TestHeadFactory;
 import org.slf4j.Logger;
@@ -37,6 +39,9 @@ public class ClientRemoteService {
     @Autowired
     private Jaxb2Marshaller faultMarshaller;
 
+    @Autowired
+    private PersonRepository personRepository;
+
     @Scheduled(cron = "0/3 * * * * ?")
     public void execute() {
 
@@ -70,6 +75,8 @@ public class ClientRemoteService {
 
 
         try {
+            Person singham = new Person("Singham");
+            personRepository.save(singham);
             webServiceTemplate.sendAndReceive(remoteUrl, requestCallback, responseExtractor);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
