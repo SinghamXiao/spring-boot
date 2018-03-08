@@ -21,16 +21,10 @@
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
-            <resource>
-                <directory>src/main/profiles/${env}</directory>
-            </resource>
         </resources>
         <sourceDirectory>src/main/java</sourceDirectory>
 
         <testResources>
-            <testResource>
-                <directory>src/test/java</directory>
-            </testResource>
             <testResource>
                 <directory>src/test/resources</directory>
             </testResource>
@@ -40,15 +34,12 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
