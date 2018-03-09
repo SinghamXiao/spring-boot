@@ -33,7 +33,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean<>(servlet, "/service/*");
+        return new ServletRegistrationBean<>(servlet, "/services/*");
     }
 
     @Override
@@ -44,12 +44,12 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean(name = "springBoot")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema xsdSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("Test");
-        wsdl11Definition.setLocationUri("/service");
+        wsdl11Definition.setLocationUri("/services");
         wsdl11Definition.setTargetNamespace("http://www.yuan.singham.com/service");
-        wsdl11Definition.setSchema(countriesSchema);
+        wsdl11Definition.setSchema(xsdSchema);
         wsdl11Definition.setServiceName("SpringBoot");
         wsdl11Definition.setCreateSoap11Binding(false);
         wsdl11Definition.setCreateSoap12Binding(true);
@@ -57,7 +57,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     }
 
     @Bean
-    public XsdSchema countriesSchema() {
+    public XsdSchema getXsdSchemaSchema() {
         return new SimpleXsdSchema(new ClassPathResource("TestBody.xsd"));
     }
 
